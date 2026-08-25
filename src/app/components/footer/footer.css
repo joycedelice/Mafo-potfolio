@@ -154,10 +154,11 @@ body.dark :host,
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 0.8fr 0.8fr 1.4fr;
+  display: flex;
+  
   gap: 2.5rem;
   padding-bottom: 1.75rem;   /* était 3rem */
+  justify-content: space-between;
 }
 
 /* --- MARQUE & PROFIL --- */
