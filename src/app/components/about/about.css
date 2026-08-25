@@ -1,0 +1,210 @@
+/* ==========================================================================
+   VARIABLES DE COULEURS EN VERT (MODE CLAIR / SOMBRE)
+   ========================================================================== */
+:host {
+  --green-primary: #10b981;
+  --green-hover: #059669;
+  --green-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --green-glow: rgba(16, 185, 129, 0.25);
+  --green-border: rgba(16, 185, 129, 0.25);
+
+  --bg-color: #f7faf9;
+  --bg-card: #ffffff;
+  --chip-bg: #f1f5f4;         /* ← ajouté : légèrement gris-vert, distinct du blanc de la carte */
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+
+  --purple-primary: var(--green-primary);
+  --purple-gradient: var(--green-gradient);
+}
+
+
+/* Bascule automatique en Mode Sombre */
+:host-context(.dark),
+:host.dark,
+body.dark :host {
+  --green-primary: #34d399;
+  --green-hover: #10b981;
+  --green-glow: rgba(52, 211, 153, 0.12);
+  --green-border: rgba(52, 211, 153, 0.35);
+
+  --bg-color: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --chip-bg: rgba(255, 255, 255, 0.03);
+}
+
+/* ==========================================================================
+   SECTION À PROPOS
+   ========================================================================== */
+
+.about-section {
+  width: 100%;
+  padding: 4rem 2rem;
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.about-container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Carte conteneur avec coins très arrondis */
+.about-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 28px;
+  padding: 3.5rem;
+  box-shadow: 0 16px 40px var(--shadow-color);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--green-gradient);
+}
+
+/* --- PARTIE HAUTE (GRID 2 COLONNES) --- */
+.about-content-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Visual / Illustration à gauche */
+.illustration-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.illustration-img {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Contenu texte à droite */
+.text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sub-title {
+  color: var(--green-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.main-title {
+  color: var(--text-main);
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: -0.5px;
+}
+
+.description {
+  color: var(--text-sub);
+  font-size: 1.025rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- PARTIE BASSE (BADGES / CHIPS) --- */
+.info-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.chip {
+  background-color: var(--chip-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.chip:hover {
+  background-color: var(--green-glow);
+  border-color: var(--green-border);
+  transform: translateY(-2px);
+}
+
+.chip-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--green-primary);
+  flex-shrink: 0;
+}
+
+.chip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.chip-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.chip-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .about-card {
+    padding: 2.25rem;
+  }
+
+  .about-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .text-content {
+    align-items: center;
+  }
+
+  .info-chips-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}

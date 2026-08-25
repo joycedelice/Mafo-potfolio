@@ -1,0 +1,180 @@
+/* ==========================================================================
+   VARIABLES DE COULEURS EN VERT (MODE CLAIR / SOMBRE)
+   ========================================================================== */
+:host {
+  /* Mode Clair (Par défaut) — fond légèrement teinté au lieu de blanc pur */
+  --green-primary: #10b981;
+  --green-hover: #059669;
+  --green-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --green-glow: rgba(16, 185, 129, 0.25);
+  --green-border: rgba(16, 185, 129, 0.25);
+
+  --bg-color: #f7faf9;        /* plus blanc pur ! */
+  --bg-card: #ffffff;         /* les cartes restent blanches pour ressortir */
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+
+  --purple-primary: var(--green-primary);
+  --purple-gradient: var(--green-gradient);
+}
+
+
+/* Bascule automatique en Mode Sombre */
+:host-context(.dark),
+:host.dark,
+body.dark :host {
+  --green-primary: #34d399;
+  --green-hover: #10b981;
+  --green-glow: rgba(52, 211, 153, 0.2);
+  --green-border: rgba(52, 211, 153, 0.4);
+
+  --bg-color: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   SECTION COMPÉTENCES
+   ========================================================================== */
+
+.skills-section {
+  width: 100%;
+  padding: 4rem 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sub-title {
+  color: var(--green-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  display: block;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.main-title {
+  color: var(--text-main);
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.skill-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 260px;
+  max-width: 300px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--green-border);
+  box-shadow: 0 14px 30px var(--green-glow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.icon-box {
+  width: 24px;
+  height: 24px;
+  color: var(--green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-box svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.skills-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--chip-bg, rgba(16, 185, 129, 0.05));
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 0.55rem 0.65rem;
+  color: var(--text-sub);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.skills-list li:hover {
+  background-color: var(--green-glow);
+  border-color: var(--green-border);
+  color: var(--text-main);
+  transform: translateY(-2px);
+}
+
+.skill-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Pour les Soft Skills, sans logo — petit point coloré à la place */
+.skill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--green-primary);
+  flex-shrink: 0;
+}

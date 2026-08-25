@@ -1,0 +1,101 @@
+<section class="experience-section" id="experience">
+  <div class="container">
+    <div class="experience-card">
+
+      <div class="section-header">
+        <span class="sub-title">— Expérience &amp; Parcours —</span>
+        <h2 class="main-title">Mon parcours</h2>
+        <p class="section-desc">
+          Mon parcours académique, mes formations et les projets qui m'ont permis d'acquérir des compétences solides.
+        </p>
+      </div>
+
+      <div class="timeline">
+        @for (item of timeline; track item.title) {
+          <div class="timeline-row">
+
+            <div class="timeline-date">
+              <span class="date-main">{{ item.date }}</span>
+              <span class="date-sub">{{ item.dateSub }}</span>
+            </div>
+
+            <div class="timeline-track">
+              <div class="timeline-icon">
+                @if (item.icon === 'graduation') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                }
+                @if (item.icon === 'university') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="21" x2="21" y2="21"></line>
+                    <line x1="5" y1="21" x2="5" y2="10"></line>
+                    <line x1="19" y1="21" x2="19" y2="10"></line>
+                    <polygon points="12 3 21 9 3 9 12 3"></polygon>
+                  </svg>
+                }
+                @if (item.icon === 'laptop') {
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+                    <line x1="2" y1="20" x2="22" y2="20"></line>
+                  </svg>
+                }
+              </div>
+              <div class="timeline-line"></div>
+            </div>
+
+            <div class="timeline-content">
+              <div class="content-header">
+                <h3 class="content-title">{{ item.title }}</h3>
+                @if (item.badge) {
+                  <span class="badge">{{ item.badge }}</span>
+                }
+              </div>
+              <p class="content-desc">{{ item.description }}</p>
+              <div class="content-tags">
+                @for (tag of item.tags; track tag) {
+                  <span class="mini-tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+
+          </div>
+        }
+      </div>
+
+      <div class="stats-bar">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-item">
+            <div class="stat-icon">
+              @if (stat.icon === 'star') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              }
+              @if (stat.icon === 'code') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              }
+              @if (stat.icon === 'users') {
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              }
+            </div>
+            <div class="stat-text">
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+          </div>
+        }
+      </div>
+
+    </div>
+  </div>
+</section>

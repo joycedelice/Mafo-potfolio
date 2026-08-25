@@ -1,0 +1,63 @@
+<header class="header">
+  <div class="header-container">
+
+    <!-- Logo & Nom -->
+    <div class="logo-section" (click)="scrollTo('accueil')">
+      <div class="logo-icon">
+        <span class="j-letter">J</span>
+        <span class="m-letter">M</span>
+      </div>
+      <span class="brand-name">Joyce Mafo</span>
+    </div>
+
+    <!-- Navigation Links (Menu déroulant sur mobile) -->
+    <nav class="nav-links" [class.open]="isMenuOpen()">
+      <a *ngFor="let item of navItems" [class.active]="activeSection() === item.id" (click)="scrollTo(item.id)">
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <!-- Zone d'actions (Bouton Thème + Bouton Burger) -->
+    <div class="header-actions">
+
+      <!-- Switcher Mode Sombre / Clair -->
+      <button class="theme-toggle" (click)="themeService.toggleTheme()" [class.dark]="themeService.isDarkMode()"
+        aria-label="Changer de thème" type="button">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"></circle>
+          <line x1="12" y1="2" x2="12" y2="4"></line>
+          <line x1="12" y1="20" x2="12" y2="22"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="2" y1="12" x2="4" y2="12"></line>
+          <line x1="20" y1="12" x2="22" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <a href="assets/cv.pdf" download class="btn btn-outline">
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span class="btn-label">Télécharger mon CV</span>
+      </a>
+      <!-- Bouton Burger (visible uniquement sur mobile) -->
+      <button class="burger-btn" [class.open]="isMenuOpen()" (click)="toggleMenu()" aria-label="Menu de navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Overlay d'arrière-plan pour mobile -->
+  <div class="menu-overlay" [class.active]="isMenuOpen()" (click)="toggleMenu()"></div>
+</header>

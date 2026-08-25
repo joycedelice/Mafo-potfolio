@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   THEME VARIABLES (GLOBAL)
+   ========================================================================== */
+
+/* Mode CLAIR (Light Mode par défaut) */
+:root {
+  /* --- Couleurs d'accentuation plus douces --- */
+  --green-primary: #0d9488;
+  --green-hover: #0f766e;
+  --green-glow: rgba(13, 148, 136, 0.15);
+  --green-badge-bg: rgba(13, 148, 136, 0.1);
+
+  /* --- Fonds adoucis (Anti-éblouissement) --- */
+  --bg-color: #f8fafc;
+  --bg-card: #f1f5f9;
+  
+  /* --- Typographie adoucie --- */
+  --text-main: #1e293b;
+  --text-sub: #64748b;
+  
+  /* --- Bordures & Ombres légères --- */
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(15, 23, 42, 0.04);
+
+  --purple-primary: var(--green-primary);
+}
+
+/* Mode SOMBRE (Dark Mode activé par le service) */
+:root.dark, body.dark {
+  --bg-color: #0B0A1A;
+  --bg-card: rgba(20, 18, 41, 0.65);
+  --text-main: #FFFFFF;
+  --text-sub: #A0A0B2;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --toggle-bg: #1B1838;
+  --shadow-color: rgba(0, 0, 0, 0.37);
+}
+
+/* Global Reset & Smooth Transitions */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

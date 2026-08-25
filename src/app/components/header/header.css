@@ -1,0 +1,418 @@
+:host {
+  /* Mode Clair */
+  --primary-color: #10b981;
+  --primary-hover: #059669;
+  --green-primary: #10b981;
+  --green-hover: #059669;
+  --green-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --green-glow: rgba(16, 185, 129, 0.25);
+  --green-border: rgba(16, 185, 129, 0.25);
+
+  --bg-color: #eef2f1;        /* légèrement plus soutenu que le fond de page (#f7faf9) */
+  --bg-card: #ffffff;
+  --text-color: #0f172a;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-sub: #475569;
+  --border-color: #dce3e1;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --toggle-bg: #dce3e1;
+  --toggle-thumb: #ffffff;
+
+  --purple-primary: var(--green-primary);
+  --purple-gradient: var(--green-gradient);
+}
+
+:host-context(.dark),
+:host.dark,
+body.dark :host {
+  --primary-color: #34d399;
+  --primary-hover: #10b981;
+  --bg-color: #0b1220;        /* légèrement plus sombre que le fond de page (#0f172a) */
+  --text-color: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --toggle-bg: #1e293b;
+  --toggle-thumb: #0b1220;
+}
+
+/* ==========================================================================
+   HEADER PRINCIPAL
+   ========================================================================== */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--bg-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- LOGO --- */
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  flex-shrink: 0;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+/* --- NAVIGATION DESKTOP --- */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+.nav-links a.active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+/* --- ACTIONS (THEME + BOUTON) --- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-outline {
+  background-color: var(--primary-color);
+  color: #0f172a;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* --- THEME TOGGLE --- */
+
+
+.theme-toggle {
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle .icon {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  transition: opacity 0.3s ease, transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-sun {
+  color: #f59e0b;
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.icon-moon {
+  color: #818cf8;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.theme-toggle.dark .icon-sun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+.theme-toggle.dark .icon-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+/* --- BOUTON BURGER --- */
+.burger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  z-index: 1001; /* Reste au-dessus du panneau et du fond flouté */
+  flex-shrink: 0;
+}
+
+.burger-btn span {
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--text-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.burger-btn.open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.burger-btn.open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-btn.open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* --- OVERLAY FLOUTÉ --- */
+.menu-overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 998;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Écrans intermédiaires (992px) — resserre un peu la nav avant le burger */
+@media (max-width: 992px) {
+  .header-container {
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+}
+
+/* Écrans <= 850px : bascule vers le menu burger un peu plus tôt pour
+   éviter que "Télécharger mon CV" + nav + toggle ne se tassent */
+@media (max-width: 850px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 260px;
+    height: 100vh;
+    background-color: var(--bg-color);
+    flex-direction: column;
+    padding: 6rem 1.5rem 2rem 1.5rem;
+    gap: 1.25rem;
+    box-shadow: -5px 0 25px var(--shadow-color);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+  }
+
+  .nav-links.open {
+    transform: translateX(-280px);
+  }
+
+  .nav-links a {
+    font-size: 1.05rem;
+  }
+
+  .burger-btn {
+    display: flex !important;
+  }
+}
+
+/* Écrans <= 640px : le bouton CV perd son texte, garde juste l'icône,
+   pour laisser assez de place au logo + toggle + burger */
+@media (max-width: 640px) {
+  .btn-outline span,
+  .btn-outline {
+    font-size: 0.85rem;
+  }
+
+  .btn-outline {
+    padding: 0.55rem 0.9rem;
+  }
+
+  .header-actions {
+    gap: 0.85rem;
+  }
+}
+
+/* Écrans <= 480px : on cache le texte du bouton CV, on garde l'icône seule */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.65rem 1rem;
+  }
+
+  .btn-outline {
+    padding: 0.55rem;
+    border-radius: 10px;
+  }
+
+  .btn-outline .btn-icon {
+    margin: 0;
+  }
+
+  /* Cache le texte "Télécharger mon CV", garde seulement l'icône */
+  .btn-outline {
+    display: inline-flex;
+  }
+}
+
+/* Écrans <= 450px */
+@media (max-width: 450px) {
+  .header {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .header-actions {
+    gap: 0.5rem;
+  }
+
+  .logo-section {
+    gap: 0.5rem;
+  }
+}
+
+/* Écrans ultra-petits (350px et moins) */
+@media (max-width: 350px) {
+  .header-container {
+    gap: 0.25rem;
+  }
+
+  .btn-outline {
+    padding: 0.45rem;
+    border-radius: 50%;
+  }
+
+  .btn-icon {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .theme-toggle {
+    padding: 2px;
+  }
+
+  .nav-links {
+    width: 80vw;
+    right: -80vw;
+  }
+
+  .nav-links.open {
+    transform: translateX(-80vw);
+  }
+}
+@media (max-width: 480px) {
+  .btn-label {
+    display: none;
+  }
+}

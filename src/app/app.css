@@ -1,0 +1,31 @@
+:host {
+  /* --- Couleurs d'accentuation calmes --- */
+  --green-primary: #059669;
+  --green-hover: #047857;
+  --green-glow: rgba(5, 150, 105, 0.12);
+  --green-badge-bg: rgba(5, 150, 105, 0.1);
+
+  /* --- Fonds warm/neutres (Très peu de luminosité) --- */
+  --bg-color: #f3f0e8;             /* Fond sable/beige très doux (style livre/Kindle) */
+  --bg-card: #e7e3d7;              /* Cartes un peu plus sombres pour contraster subtilement */
+  
+  /* --- Typographie adoucie --- */
+  --text-main: #2b2d2f;            /* Noir très mat / fusain */
+  --text-sub: #5c6065;             /* Gris neutre */
+  
+  /* --- Bordures & Ombres --- */
+  --border-color: #d8d3c5;
+  --shadow-color: rgba(43, 45, 47, 0.05);
+
+  --purple-primary: var(--green-primary);
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
