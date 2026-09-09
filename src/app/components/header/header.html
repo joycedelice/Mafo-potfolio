@@ -12,9 +12,11 @@
 
     <!-- Navigation Links (Menu déroulant sur mobile) -->
     <nav class="nav-links" [class.open]="isMenuOpen()">
-      <a *ngFor="let item of navItems" [class.active]="activeSection() === item.id" (click)="scrollTo(item.id)">
-        {{ item.label }}
-      </a>
+      @for (item of navItems; track item.id) {
+        <a [class.active]="activeSection() === item.id" (click)="scrollTo(item.id)">
+          {{ item.label }}
+        </a>
+      }
     </nav>
 
     <!-- Zone d'actions (Bouton Thème + Bouton Burger) -->
@@ -47,6 +49,7 @@
         </svg>
         <span class="btn-label">Télécharger mon CV</span>
       </a>
+
       <!-- Bouton Burger (visible uniquement sur mobile) -->
       <button class="burger-btn" [class.open]="isMenuOpen()" (click)="toggleMenu()" aria-label="Menu de navigation">
         <span></span>

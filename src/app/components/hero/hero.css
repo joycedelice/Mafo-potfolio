@@ -215,110 +215,157 @@ body.dark :host {
   color: #FFFFFF;
   transform: translateY(-3px);
 }
-
-/* --- COLONNE DROITE (VISUEL & PHOTO) --- */
+/* --- COLONNE DROITE (VISUEL & PHOTO CIRCULAIRE) --- */
+/* --- COLONNE DROITE (VISUEL & PHOTO CIRCULAIRE) --- */
 .hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 500px; /* était 420px */
 }
 
 /* Halo vert */
 .glow-bg {
   position: absolute;
-  width: 380px;
-  height: 380px;
+  width: 430px; /* était 360px */
+  height: 430px; /* était 360px */
   background: radial-gradient(circle, var(--green-glow) 0%, rgba(16, 185, 129, 0) 70%);
   border-radius: 50%;
   z-index: 1;
 }
 
-/* Cercle pointillé */
+/* Cercle pointillé orbital */
 .orbit-circle {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 470px; /* était 400px */
+  height: 470px; /* était 400px */
   border: 1px dashed var(--green-border);
   border-radius: 50%;
   z-index: 1;
+  animation: spin 40s linear infinite;
 }
 
-/* Photo */
-.image-wrapper {
+/* Conteneur principal photo + badges */
+.avatar-wrapper {
   position: relative;
+  width: 360px; /* était 300px */
+  height: 360px; /* était 300px */
   z-index: 2;
-  max-width: 420px;
-  width: 100%;
 }
 
-.profile-img {
+/* Anneau dégradé autour de la photo */
+.avatar-ring {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  border-radius: 50%;
+  padding: 6px;
+  background: conic-gradient(
+    from 0deg,
+    var(--green-primary),
+    var(--green-hover),
+    var(--green-primary)
+  );
+  box-shadow:
+    0 20px 50px -10px var(--green-glow),
+    0 8px 24px var(--shadow-color);
+}
+
+.avatar-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--bg-card);
+  border: 4px solid var(--bg-color);
+}
+
+.avatar-photo img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+  object-position: top center;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
-/* Carte Code Snippet Flottante */
-.code-card {
+.avatar-wrapper:hover .avatar-photo img {
+  transform: scale(1.05);
+}
+
+/* --- BADGES DE LANGAGES FLOTTANTS --- */
+.tech-badge {
   position: absolute;
-  top: 15%;
-  right: -10px;
-  z-index: 3;
-  width: 170px;
-  background: var(--bg-card);
+  width: 56px;
+  height: 56px;
+  background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 16px;
-  padding: 1rem;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px var(--shadow-color);
-  animation: float 4s ease-in-out infinite;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  z-index: 3;
+  animation: badge-float 3.5s ease-in-out infinite;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-@keyframes float {
+.tech-badge:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 14px 28px var(--green-glow);
+}
+
+.tech-badge img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+@keyframes badge-float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
 
-.code-icon {
-  font-family: monospace;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text-main);
-  margin-bottom: 0.75rem;
+/* Positionnement de chaque badge autour du cercle */
+.badge-angular {
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.code-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.badge-typescript {
+  top: 15%;
+  right: -30px;
 }
 
-.line {
-  height: 4px;
-  border-radius: 4px;
+.badge-js {
+  bottom: 15%;
+  right: -30px;
 }
 
-.line-1 { width: 90%; background: linear-gradient(90deg, #10b981, #059669); }
-.line-2 { width: 60%; background: rgba(16, 185, 129, 0.4); }
-.line-3 { width: 80%; background: linear-gradient(90deg, #34d399, #10b981); }
-.line-4 { width: 45%; background: rgba(16, 185, 129, 0.2); }
+.badge-html {
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.badge-css {
+  top: 15%;
+  left: -30px;
+}
 
 /* ==========================================================================
    RESPONSIVE DESIGN (TABLETTES & MOBILES)
    ========================================================================== */
 
-/* Ordinateurs portables / Tablettes en paysage (992px) */
 @media (max-width: 992px) {
   .hero-section {
     padding: 2.5rem 1.5rem;
   }
 
   .hero-container {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
     gap: 3.5rem;
     text-align: center;
   }
@@ -334,111 +381,66 @@ body.dark :host {
   .hero-actions {
     justify-content: center;
   }
-
-  .code-card {
-    right: 5%;
-  }
 }
-
-/* Tablettes en portrait et Mobiles (768px) */
 @media (max-width: 768px) {
-  .hero-section {
-    min-height: auto;
-    padding: 2rem 1rem;
-  }
-
-  .hero-title {
-    font-size: 2rem;
-  }
-
-  .hero-description {
-    font-size: 0.95rem;
-    margin-bottom: 1.75rem;
+  .hero-visual {
+    min-height: 400px; /* était 340px */
   }
 
   .glow-bg {
-    width: 280px;
-    height: 280px;
+    width: 330px; /* était 280px */
+    height: 330px;
   }
 
   .orbit-circle {
-    width: 300px;
-    height: 300px;
+    width: 360px; /* était 310px */
+    height: 360px;
   }
 
-  .image-wrapper {
-    max-width: 300px;
+  .avatar-wrapper {
+    width: 270px; /* était 230px */
+    height: 270px;
   }
 
-  .code-card {
-    width: 140px;
-    padding: 0.75rem;
-    top: 5%;
-    right: 0;
+  .tech-badge {
+    width: 50px; /* était 46px */
+    height: 50px;
+    border-radius: 14px;
+  }
+
+  .tech-badge img {
+    width: 26px; /* était 24px */
+    height: 26px;
   }
 }
 
-/* Petit écran mobile (480px) */
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 1.75rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .btn {
-    width: 100%;
-    justify-content: center;
+  .hero-visual {
+    min-height: 320px; /* était 280px */
   }
 
   .glow-bg {
-    width: 220px;
+    width: 260px; /* était 220px */
+    height: 260px;
+  }
+
+  .orbit-circle {
+    width: 290px; /* était 250px */
+    height: 290px;
+  }
+
+  .avatar-wrapper {
+    width: 220px; /* était 190px */
     height: 220px;
   }
 
-  .orbit-circle {
-    width: 240px;
-    height: 240px;
+  .tech-badge {
+    width: 42px; /* était 40px */
+    height: 42px;
   }
 
-  .image-wrapper {
-    max-width: 240px;
-  }
-
-  /* Cache le bloc de code flottant sur très petit écran pour éviter les chevauchements */
-  .code-card {
-    display: none;
-  }
-}
-/* Ordinateurs portables / Tablettes / Mobiles */
-@media (max-width: 992px) {
-  .hero-section {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .hero-container {
-    display: flex;                  /* Active le mode flexbox */
-    flex-direction: column-reverse; /* Place le deuxième élément (l'image) au-dessus du premier (le texte) */
-    gap: 3.5rem;
-    text-align: center;
-  }
-
-  .hero-content {
-    align-items: center;
-  }
-
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .code-card {
-    right: 5%;
+  .tech-badge img {
+    width: 22px; /* était 20px */
+    height: 22px;
   }
 }

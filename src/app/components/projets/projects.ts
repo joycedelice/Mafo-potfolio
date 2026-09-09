@@ -19,6 +19,14 @@ interface Project {
 export class ProjectsComponent {
   projects: Project[] = [
     {
+      title: 'Délices de Douala',
+      description: 'Application web Angular permettant de découvrir, noter et filtrer les meilleurs restaurants de Douala. Système de notation par étoiles en temps réel, tri dynamique et filtres avancés, entièrement construit avec les Angular Signals.',
+      image: 'images/projet1.png',
+      tags: ['Angular', 'TypeScript', 'Signals', 'HttpResource', 'Routing'],
+      demoUrl: 'https://delices-de-douala-344o.vercel.app/',
+      githubUrl: 'https://github.com/joycedelice/delices-de-douala'
+    },
+    {
       title: 'SmartQueue CM',
       description: 'Application de gestion des files d\'attente permettant aux utilisateurs de suivre leur position en temps réel.',
       image: 'assets/images/smartqueue.jpg',
@@ -42,6 +50,5 @@ export class ProjectsComponent {
       demoUrl: '#',
       githubUrl: '#'
     },
-
   ];
 }
