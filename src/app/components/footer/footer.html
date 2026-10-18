@@ -1,6 +1,5 @@
 <footer class="footer-wrapper">
 
-  <!-- FOOTER SOMBRE FIXE -->
   <div class="main-footer">
     <div class="container">
 
@@ -9,7 +8,7 @@
         <!-- Colonne 1 : Profil -->
         <div class="footer-col brand-col">
           <div class="brand-header">
-            <div class="avatar-logo">JM</div>
+            <div class="avatar-logo" aria-hidden="true">JM</div>
             <div class="brand-titles">
               <h3 class="brand-name">Joyce Mafo</h3>
               <p class="brand-role">Développeuse Angular</p>
@@ -18,16 +17,16 @@
           <p class="brand-bio">Passionnée par le code et les solutions qui ont du sens.</p>
 
           <div class="social-links">
-            <a href="https://github.com/joycedelice" target="_blank" class="social-btn" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <a href="https://github.com/joycedelice" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-2m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                 </path>
               </svg>
             </a>
             <a href="https://www.linkedin.com/in/joyce-délice-mafo-tadie-36b943430?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-              target="_blank" class="social-btn" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>
                 <circle cx="4" cy="4" r="2"></circle>
@@ -35,7 +34,7 @@
             </a>
 
             <a href="mailto:joycedelicemafo@gmail.com" class="social-btn" aria-label="Email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
@@ -43,14 +42,12 @@
           </div>
         </div>
 
-
-
         <!-- Colonne 3 : Ressources -->
         <div class="footer-col">
           <h4 class="col-title">Ressources</h4>
           <ul class="footer-links">
-            <li><a href="#cv">CV</a></li>
-            <li><a href="https://github.com/joycedelice" target="_blank">GitHub</a></li>
+            <li><a [href]="cv.url" target="_blank" rel="noopener" (click)="cvService.download($event)">CV</a></li>
+            <li><a href="https://github.com/joycedelice" target="_blank" rel="noopener">GitHub</a></li>
             <li><a href="#blog" class="disabled-link">Blog (à venir)</a></li>
           </ul>
         </div>
@@ -61,7 +58,8 @@
           <p class="newsletter-desc">Recevez mes nouveautés et articles.</p>
 
           <form (ngSubmit)="onSubscribe()" class="newsletter-form">
-            <input type="email" [(ngModel)]="emailNewsletter" name="emailNewsletter" placeholder="Votre email"
+            <label for="footer-newsletter-email" class="sr-only">Votre email</label>
+            <input id="footer-newsletter-email" type="email" [(ngModel)]="emailNewsletter" name="emailNewsletter" placeholder="Votre email"
               required />
             <button type="submit" class="btn-subscribe">S'abonner</button>
           </form>
@@ -73,10 +71,10 @@
       <div class="bottom-bar">
         <p class="copyright">&copy; {{ currentYear }} Joyce Mafo. Tous droits réservés.</p>
         <p class="made-with">Fait avec <img class="icon"
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg">Angular 22</p>
+            src="images/icons/angularjs-original.svg" alt="" width="20" height="20">Angular 22</p>
 
         <button class="scroll-top-btn" (click)="scrollToTop()" aria-label="Remonter en haut">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <line x1="12" y1="19" x2="12" y2="5"></line>
             <polyline points="5 12 12 5 19 12"></polyline>
           </svg>

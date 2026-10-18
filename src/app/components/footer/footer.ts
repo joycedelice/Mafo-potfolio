@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CV } from '../../config/site.config';
+import { CvService } from '../../services/cv';
 
 @Component({
   selector: 'app-footer',
@@ -9,8 +11,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './footer.css'
 })
 export class FooterComponent {
+  cvService = inject(CvService);
+  cv = CV;
   emailNewsletter: string = '';
-  currentYear: number = 2026;
+  currentYear: number = new Date().getFullYear();
 
   onSubscribe() {
     if (this.emailNewsletter) {

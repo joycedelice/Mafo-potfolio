@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 interface Project {
   title: string;
   description: string;
-  image: string;
+  images: [string, string]; // 2 photos par projet
   tags: string[];
   demoUrl: string;
   githubUrl: string;
@@ -21,7 +21,7 @@ export class ProjectsComponent {
     {
       title: 'Délices de Douala',
       description: 'Application web Angular permettant de découvrir, noter et filtrer les meilleurs restaurants de Douala. Système de notation par étoiles en temps réel, tri dynamique et filtres avancés, entièrement construit avec les Angular Signals.',
-      image: 'images/projet1.png',
+      images: ['images/delices-1.png', 'images/delices-2.png'],
       tags: ['Angular', 'TypeScript', 'Signals', 'HttpResource', 'Routing'],
       demoUrl: 'https://delices-de-douala-344o.vercel.app/',
       githubUrl: 'https://github.com/joycedelice/delices-de-douala'
@@ -29,7 +29,7 @@ export class ProjectsComponent {
     {
       title: 'SmartQueue CM',
       description: 'Application de gestion des files d\'attente permettant aux utilisateurs de suivre leur position en temps réel.',
-      image: 'assets/images/smartqueue.jpg',
+      images: ['images/smartqueue.png', 'images/smartqueue-2.png'],
       tags: ['Angular', 'TypeScript', 'Socket.IO'],
       demoUrl: '#',
       githubUrl: '#'
@@ -37,18 +37,10 @@ export class ProjectsComponent {
     {
       title: 'Joyce Food',
       description: 'Plateforme web de restaurant avec présentation du menu et système de commande en ligne.',
-      image: 'assets/images/joycefood.jpg',
+      images: ['images/joycefood.png', 'images/joycefood-2.png'],
       tags: ['Angular', 'Bootstrap', 'Firebase'],
       demoUrl: '#',
       githubUrl: '#'
-    },
-    {
-      title: 'Dashboard Analytics',
-      description: 'Tableau de bord interactif permettant de visualiser et analyser des données.',
-      image: 'assets/images/dashboard.jpg',
-      tags: ['Angular', 'TypeScript', 'Chart.js', 'REST API'],
-      demoUrl: '#',
-      githubUrl: '#'
-    },
+    }
   ];
 }

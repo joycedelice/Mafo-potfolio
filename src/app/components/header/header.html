@@ -13,19 +13,20 @@
     <!-- Navigation Links (Menu déroulant sur mobile) -->
     <nav class="nav-links" [class.open]="isMenuOpen()">
       @for (item of navItems; track item.id) {
-        <a [class.active]="activeSection() === item.id" (click)="scrollTo(item.id)">
-          {{ item.label }}
-        </a>
+      <a [href]="'#' + item.id" [class.active]="activeSection() === item.id" (click)="scrollTo(item.id, $event)">
+        {{ item.label }}
+      </a>
       }
     </nav>
 
-    <!-- Zone d'actions (Bouton Thème + Bouton Burger) -->
+    <!-- Zone d'actions (Bouton Thème + CV + Burger) -->
     <div class="header-actions">
 
       <!-- Switcher Mode Sombre / Clair -->
       <button class="theme-toggle" (click)="themeService.toggleTheme()" [class.dark]="themeService.isDarkMode()"
         aria-label="Changer de thème" type="button">
-        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="icon icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
           <circle cx="12" cy="12" r="4"></circle>
           <line x1="12" y1="2" x2="12" y2="4"></line>
           <line x1="12" y1="20" x2="12" y2="22"></line>
@@ -36,13 +37,16 @@
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
         </svg>
-        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="icon icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
 
-      <a href="assets/cv.pdf" download class="btn btn-outline">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <!-- Bouton Télécharger le CV -->
+      <a [href]="cv.url" target="_blank" rel="noopener" class="btn btn-outline" aria-label="Télécharger mon CV (PDF)"
+        (click)="cvService.download($event)">
+        <svg class="btn-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
           <polyline points="7 10 12 15 17 10"></polyline>
           <line x1="12" y1="15" x2="12" y2="3"></line>
