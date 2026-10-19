@@ -27,20 +27,20 @@ export class ProjectsComponent {
       githubUrl: 'https://github.com/joycedelice/delices-de-douala'
     },
     {
-      title: 'SmartQueue CM',
-      description: 'Application de gestion des files d\'attente permettant aux utilisateurs de suivre leur position en temps réel.',
-      images: ['images/smartqueue.png', 'images/smartqueue-2.png'],
-      tags: ['Angular', 'TypeScript', 'Socket.IO'],
+      title: 'CertiUni',
+      description: 'Plateforme nationale de délivrance et de vérification de diplômes universitaires au Cameroun. Chaque université gère ses propres diplômes, et toute personne peut vérifier l\'authenticité d\'un diplôme en quelques secondes. Projet d\'équipe réalisé pendant l\'Angular Talent Lab 2026.',
+      images: ['images/certiuni-1.png', 'images/certiuni-2.png'],
+      tags: ['Angular', 'TypeScript', 'Travail d\'équipe'],
       demoUrl: '#',
       githubUrl: '#'
     },
     {
-      title: 'Joyce Food',
-      description: 'Plateforme web de restaurant avec présentation du menu et système de commande en ligne.',
-      images: ['images/joycefood.png', 'images/joycefood-2.png'],
-      tags: ['Angular', 'Bootstrap', 'Firebase'],
-      demoUrl: '#',
-      githubUrl: '#'
+      title: 'Virtual Elections',
+      description: 'Plateforme web de vote en ligne permettant d\'organiser une élection de façon simple et transparente : inscription des électeurs, choix du candidat et affichage des résultats, avec une interface claire et responsive.',
+      images: ['images/virtual-1.png', 'images/virtual-2.png'],
+      tags: ['HTML', 'Bootstrap', 'CSS', 'JavaScript'],
+      demoUrl: 'https://273-nine.vercel.app/',
+      githubUrl: 'https://github.com/joycedelice/273'
     }
   ];
 }
